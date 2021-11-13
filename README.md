@@ -56,11 +56,11 @@ A Nothing Version Of Archcraft, For Advanced Users.
 
 ## Latest Release
 
-- **`ISO`** : [archcraft-lite-2021.11.13-x86_64.iso](#)
-- **`SIG`** : [archcraft-lite-2021.11.13-x86_64.iso.sig](#)
-- **`SHA`** : [archcraft-lite-2021.11.13-x86_64.iso.sha256sum](#)
+- **`ISO`** : [archcraft-lite-2021.11.13-x86_64.iso](https://github.com/archcraft-os/archcraft-lite/releases/download/v21.11/archcraft-lite-2021.11.13-x86_64.iso)
+- **`SIG`** : [archcraft-lite-2021.11.13-x86_64.iso.sig](https://github.com/archcraft-os/archcraft-lite/releases/download/v21.11/archcraft-lite-2021.11.13-x86_64.iso.sig)
+- **`SHA`** : [archcraft-lite-2021.11.13-x86_64.iso.sha256sum](https://github.com/archcraft-os/archcraft-lite/releases/download/v21.11/archcraft-lite-2021.11.13-x86_64.iso.sha256sum)
 `3b9a9a13a5132ad7f8c5e2f369450f65cf7daf2b0979d847b400a598457571ec`
-- **`TORRENT`** : [archcraft-lite-2021.11.13-x86_64.iso.torrent](#)
+- **`TORRENT`** : [archcraft-lite-2021.11.13-x86_64.iso.torrent](https://github.com/archcraft-os/archcraft-lite/releases/download/v21.11/archcraft-lite-2021.11.13-x86_64.iso.torrent)
 
 ## Verify the authenticity of the ISO
 
