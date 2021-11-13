@@ -1,0 +1,12 @@
+{
+    "manifest_version": "1",
+    "name": "arc",
+    "display_name": "Arc Dark",
+    "extend_theme": null,
+    "css_file": "theme.css",
+    "css_file_gtk_3.20+": "theme-gtk-3.20.css",
+    "matched_text_hl_colors": {
+        "when_selected": "#5294E2",
+        "when_not_selected": "#5294E2"
+    }
+}

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2021 Aditya Shakya <adi1090x@gmail.com>
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
+## About Archcraft
+
+yad --title='About Archcraft' --window-icon='archcraft-logo' \
+	--about \
+	--pname='Archcraft Lite' \
+	--pversion='v21.11' \
+	--image='archcraft-logo' \
+	--comments="A Nothing version of Archcraft." \
+	--copyright='Copyright 2020-2021, Aditya Shakya <adi1090x@gmail.com>' \
+	--license='GPL3' \
+	--website='https://archcraft.io' \
+	--website-label='archcraft.io' \
+	--authors="Aditya Shakya <adi1090x@gmail.com>"

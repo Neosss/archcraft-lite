@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2021 Aditya Shakya <adi1090x@gmail.com>
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
+## Kill if already running
+killall -9 picom tint2 dunst nm-applet volumeicon ksuperkey xfce4-power-manager
+
+## Restore Wallpaper
+nitrogen --restore
+
+## Start Compositing Manager
+exec picom &
+
+## Launch Tint2
+tint2 &
+
+## Notification Daemon
+exec dunst &
+
+## Thunar Daemon
+exec thunar --daemon &
+
+## Enable Super Keys For Menu
+ksuperkey -e 'Super_L=Alt_L|F1' &
+ksuperkey -e 'Super_R=Alt_L|F1' &

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Install Archcraft Lite
+Comment=Command Line Installer For Archcraft Lite
+Exec=lxterminal --geometry=100x30 -t 'Archcraft Lite Installer' -e 'sudo /abif-master/abif'
+Icon=archcraft
+Type=Application
+Categories=System;

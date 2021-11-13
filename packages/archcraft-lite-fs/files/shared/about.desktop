@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=About Archcraft
+Comment=About Archcraft OS
+Exec=about-os
+Icon=archcraft-logo
+Type=Application
+Categories=System;

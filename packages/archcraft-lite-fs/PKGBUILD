@@ -1,0 +1,65 @@
+# Maintainer: Aditya Shakya <adi1090x@gmail.com>
+
+pkgname=archcraft-lite-fs
+pkgver=1.0
+pkgrel=1
+pkgdesc="File-system of Archcraft Lite"
+url="https://github.com/archcraft-os/archcraft-lite"
+arch=('any')
+license=('GPL3')
+makedepends=()
+conflicts=('archcraft-skeleton' 'archcraft-openbox')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+
+prepare() {
+	cp -af ../files/. ${srcdir}
+}
+
+package() {
+	local _obdir=${pkgdir}/usr/share/archcraft/openbox
+	local _skeldir=${pkgdir}/etc/skel
+	local _configdir=${pkgdir}/etc/skel/.config
+	local _bindir=${pkgdir}/usr/local/bin
+	local _sharedir=${pkgdir}/usr/share
+
+	mkdir -p "$_obdir" && mkdir -p "$_skeldir" && mkdir -p "$_configdir"
+	mkdir -p "$_bindir" && mkdir -p "$_sharedir"
+
+	# Copy shared files & fix permissions
+	cp -r ${srcdir}/icons 				${pkgdir}/usr/share/archcraft
+	cp -r ${srcdir}/menulib 			"$_obdir"
+	cp -r ${srcdir}/pipemenus 			"$_obdir"
+	chmod +x "$_obdir"/pipemenus/*
+	
+	# Copy configs files
+	cfgs=(dunst fish geany gtk-3.0 lxterminal neofetch nitrogen obmenu-generator openbox ranger Thunar tint2 ulauncher xfce4)	
+	for cfg in "${cfgs[@]}"; do
+		cp -r ${srcdir}/"$cfg" 				"$_configdir"	
+	done
+
+	install -Dm 644 mimeapps.list			"$_configdir"/mimeapps.list
+	install -Dm 644 picom.conf				"$_configdir"/picom.conf
+	install -Dm 644 .dmrc					"$_skeldir"/.dmrc
+	install -Dm 644 .face					"$_skeldir"/.face
+	install -Dm 644 .gtkrc-2.0				"$_skeldir"/.gtkrc-2.0
+	install -Dm 644 .hushlogin				"$_skeldir"/.hushlogin
+
+	chmod +x "$_configdir"/openbox/autostart
+	chmod +x "$_configdir"/ranger/scope.sh
+
+	# Copy scripts
+	cp -r ${srcdir}/scripts/* 				"$_bindir"
+	chmod +x "$_bindir"/*
+
+	# Copy shared files
+	cp -r ${srcdir}/shared/backgrounds 		"$_sharedir"
+	cp -r ${srcdir}/shared/fonts 			"$_sharedir"
+	cp -r ${srcdir}/shared/icons 			"$_sharedir"
+	cp -r ${srcdir}/shared/lxdm 			"$_sharedir"
+	cp -r ${srcdir}/shared/pixmaps 			"$_sharedir"
+	cp -r ${srcdir}/shared/themes 			"$_sharedir"
+	cp -r ${srcdir}/shared/ulauncher 		"$_sharedir"
+
+	install -Dm 644 ${srcdir}/shared/about.desktop	"$_sharedir"/applications/about.desktop
+}

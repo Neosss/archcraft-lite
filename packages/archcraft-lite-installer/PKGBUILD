@@ -1,0 +1,64 @@
+# Maintainer: Aditya Shakya <adi1090x@gmail.com>
+
+pkgname=archcraft-lite-installer
+pkgver=1.0
+pkgrel=1
+pkgdesc="Command line installer for Archcraft Lite."
+url="https://github.com/archcraft-os/archcraft-lite"
+arch=('any')
+license=('GPL3')
+provides=($pkgname)
+conflicts=($pkgname)
+depends=('lxterminal')
+
+source=(
+		abif
+		abif.desktop
+		chrooted_post_install.sh
+		post_install.sh
+		dutch.trans
+		english.trans
+		french.trans
+		hungarian.trans
+		italian.trans
+		portuguese_brasil.trans
+		portuguese.trans
+		russian.trans
+		spanish.trans)
+
+sha256sums=('b988bbf01d984a031c633358cdd6e5c5c3dcda31df3240ea197cc35c0bc878f9'
+            'eadee7b6e0a0824e165fa3c1450032275e8b073b8021ec3c834ca4a98425a54c'
+            'e197b2382496004119ac28e7dd952953367ff36cbfd454c69837e6e34f5e259d'
+            '95ffc05a2b6fdc7f458919f700c7b3cf13399ca6a7a91816252f5b6d2fb432c5'
+            '14328de92e8724e88333bbbe0cb38421c2c3603b914de4c2d215c2002ce82cb0'
+            '1e4725aa96ff5a0671b6488409d52e852938f9bc6ea3af4e5f50c2ec470f05d3'
+            '24638646c4e1dca6db61f814c0e7df0506422cfa0e90a3fb6f4cadc3da8ca101'
+            '2a9da566fbadf3470db707e2ce52750f3f4bd57d5aac14aa47e017b0e3951d18'
+            'cd36a93db8068bd6885cb82aa189339fdbe588642c73324f86ed582b0378664b'
+            '981bb5791ceb59b56e94453a1ced221eb437fa364232cf6adbffb726a6949b9c'
+            'a126669933a3095a61c8ec06619c808797d9c23713ab0d4c590af545dae2a548'
+            'e5923ffe94262ff0b09a786ce0eba68a14c2d8fdd09563889048e736bab3a1f0'
+            'a1a4dbc833a7582a25a14c0da2d11decd4b201e4f35566f522b1d4c78450e2f7')
+
+package() {
+	local _idir="${pkgdir}/abif-master"
+	local _bdir="${pkgdir}/usr/bin"
+	
+	mkdir -p "$_idir" && mkdir -p "$_bdir"
+
+	install -Dm 755 chrooted_post_install.sh 	"$_bdir"/chrooted_post_install.sh
+	install -Dm 755 post_install.sh 			"$_bdir"/post_install.sh
+	install -Dm 755 abif 						"$_idir"/abif
+	install -Dm 644 dutch.trans 				"$_idir"/dutch.trans
+	install -Dm 644 english.trans 				"$_idir"/english.trans
+	install -Dm 644 french.trans 				"$_idir"/french.trans
+	install -Dm 644 hungarian.trans 			"$_idir"/hungarian.trans
+	install -Dm 644 italian.trans 				"$_idir"/italian.trans
+	install -Dm 644 portuguese_brasil.trans 	"$_idir"/portuguese_brasil.trans
+	install -Dm 644 portuguese.trans 			"$_idir"/portuguese.trans
+	install -Dm 644 russian.trans 				"$_idir"/russian.trans
+	install -Dm 644 spanish.trans 				"$_idir"/spanish.trans
+
+	# copy files
+	install -Dm 644 abif.desktop 			-t ${pkgdir}/usr/share/applications/
+}

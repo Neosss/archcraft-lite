@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2021 Aditya Shakya <adi1090x@gmail.com>
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
+## Commands Executed By Openbox Powermenu
+
+cdialog () {
+	yad --center --undecorated --button=Yes:0 --button=No:1 --text="Are you sure?" --text-align=center
+}
+
+## Options #############################################
+if  [[ $1 = "--logout" ]]; then
+	cdialog
+	if [[ "$?" == 0 ]]; then
+        openbox --exit
+    else
+        exit
+    fi
+
+elif  [[ $1 = "--suspent" ]]; then
+	cdialog
+	if [[ "$?" == 0 ]]; then
+		amixer set Master mute
+		xflock4
+		systemctl suspend
+    else
+        exit
+    fi
+
+elif  [[ $1 = "--reboot" ]]; then
+	cdialog
+	if [[ "$?" == 0 ]]; then
+        systemctl reboot
+    else
+        exit
+    fi
+
+elif  [[ $1 = "--shutdown" ]]; then
+	cdialog
+	if [[ "$?" == 0 ]]; then
+        systemctl poweroff
+    else
+        exit
+    fi
+
+## Help Menu #############################################
+else
+echo "
+Powermenu For Openbox Menu
+Developed By - Aditya Shakya (@adi1090x)
+
+Available options:
+--logout	--suspent	--reboot	--shutdown
+"
+fi
